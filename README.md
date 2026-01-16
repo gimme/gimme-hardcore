@@ -2,6 +2,11 @@
 
 Miscellaneous tweaks and features for a more difficult Minecraft experience.
 
+All features require the mod to be installed on both the server and client, unless otherwise noted.
+
+Features:
+- Block hardness: Increased block hardness based on block y-level.
+
 ![Logo](/images/logo.png)
 
 

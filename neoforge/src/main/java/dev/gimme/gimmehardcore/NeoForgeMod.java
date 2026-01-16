@@ -1,8 +1,8 @@
 package dev.gimme.gimmehardcore;
 
-import dev.gimme.gimmehardcore.domain.config.ServerConfig;
+import dev.gimme.gimmehardcore.domain.config.Config;
 import dev.gimme.gimmehardcore.domain.util.Constants;
-import dev.gimme.gimmehardcore.infrastructure.NeoForgeServerConfig;
+import dev.gimme.gimmehardcore.infrastructure.NeoForgeConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -11,7 +11,7 @@ import net.neoforged.fml.config.ModConfig;
 public class NeoForgeMod {
 
     public NeoForgeMod(ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeServerConfig.SPEC);
-        ServerConfig.INSTANCE = new NeoForgeServerConfig();
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeConfig.SPEC);
+        Config.INSTANCE = new NeoForgeConfig();
     }
 }

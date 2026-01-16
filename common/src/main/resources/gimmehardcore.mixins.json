@@ -5,5 +5,8 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
+    "hardness.MixinBlock",
+    "hardness.MixinBlockStateBase",
+    "hardness.MixinItem"
   ]
 }
