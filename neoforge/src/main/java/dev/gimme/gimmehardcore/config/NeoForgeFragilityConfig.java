@@ -7,6 +7,12 @@ public class NeoForgeFragilityConfig extends FragilityConfig {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    private static final ModConfigSpec.DoubleValue ARMOR_DAMAGE_MULTIPLIER = BUILDER
+            .comment("""
+                Multiplier for armor durability damage when taking damage.
+                 Vanilla: 1.0""")
+            .defineInRange("armorDamageMultiplier", 4.0, 0.0, 10.0);
+
     private static final ModConfigSpec.DoubleValue SHIELD_DAMAGE_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for shield durability damage when blocking attacks.
@@ -22,6 +28,11 @@ public class NeoForgeFragilityConfig extends FragilityConfig {
             .defineInRange("maxShieldBreakChance", 0.20, 0.0, 1.0);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    @Override
+    public float getArmorDamageMultiplier() {
+        return ARMOR_DAMAGE_MULTIPLIER.get().floatValue();
+    }
 
     @Override
     public float getShieldDamageMultiplier() {
