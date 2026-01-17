@@ -7,6 +7,16 @@ public class NeoForgeConfig extends Config {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    private static final ModConfigSpec.DoubleValue SHIELD_DAMAGE_MULTIPLIER = BUILDER
+            .comment("""
+                Multiplier for shield durability damage when blocking attacks.
+                Vanilla: 1.0""")
+            .defineInRange("shieldDamageMultiplier", 2.0, 0.0, 10.0);
+
+    private static final ModConfigSpec.DoubleValue SHIELD_BREAK_CHANCE = BUILDER
+            .comment("Chance for shields to break completely when blocking an attack.")
+            .defineInRange("shieldBreakChance", 0.05, 0.0, 1.0);
+
     private static final ModConfigSpec.DoubleValue START_HARDNESS_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for block hardness at the starting Y level and above.
@@ -49,6 +59,21 @@ public class NeoForgeConfig extends Config {
             .define("hardnessInOverworldOnly", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    private static class NeoForgeFragilityConfig implements FragilityConfig {
+
+        private static final FragilityConfig INSTANCE = new NeoForgeFragilityConfig();
+
+        @Override
+        public float getShieldDamageMultiplier() {
+            return SHIELD_DAMAGE_MULTIPLIER.get().floatValue();
+        }
+
+        @Override
+        public float getShieldBreakChance() {
+            return SHIELD_BREAK_CHANCE.get().floatValue();
+        }
+    }
 
     private static class NeoForgeHardnessConfig implements HardnessConfig {
 
@@ -98,6 +123,11 @@ public class NeoForgeConfig extends Config {
         public boolean isHardnessInOverworldOnly() {
             return HARDNESS_IN_OVERWORLD_ONLY.get();
         }
+    }
+
+    @Override
+    public FragilityConfig getFragilityConfig() {
+        return NeoForgeFragilityConfig.INSTANCE;
     }
 
     @Override

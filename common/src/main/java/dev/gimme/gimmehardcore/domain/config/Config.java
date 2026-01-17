@@ -4,7 +4,14 @@ public abstract class Config {
 
     public static Config INSTANCE;
 
+    public abstract FragilityConfig getFragilityConfig();
     public abstract HardnessConfig getHardnessConfig();
+
+    public interface FragilityConfig {
+
+        float getShieldDamageMultiplier();
+        float getShieldBreakChance();
+    }
 
     public interface HardnessConfig {
 
