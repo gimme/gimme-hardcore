@@ -10,6 +10,7 @@
     "hardness.MixinBlock",
     "hardness.MixinBlockStateBase",
     "hardness.MixinItem",
+    "regeneration.MixinFoodData",
     "tool.MixinItem"
   ]
 }

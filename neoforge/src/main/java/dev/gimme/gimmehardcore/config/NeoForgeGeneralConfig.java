@@ -13,10 +13,19 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
                 Hint: You can still acquire blocks through explosions.""")
             .define("pickaxeRequirements", true);
 
+    private static final ModConfigSpec.DoubleValue NATURAL_REGENERATION_SPEED_MULTIPLIER = BUILDER
+            .comment("Multiplier for natural health regeneration speed. 1.0 is vanilla speed; 0.5 is half speed.")
+            .defineInRange("naturalRegenerationSpeedMultiplier", 0.1, 0.0, 1.0);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     @Override
     public boolean pickaxeRequirements() {
         return PICKAXE_REQUIREMENTS.get();
+    }
+
+    @Override
+    public float getNaturalRegenerationSpeedMultiplier() {
+        return NATURAL_REGENERATION_SPEED_MULTIPLIER.get().floatValue();
     }
 }
