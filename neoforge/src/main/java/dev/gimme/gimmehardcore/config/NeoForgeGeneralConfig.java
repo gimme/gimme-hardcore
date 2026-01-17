@@ -27,6 +27,10 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
             .comment("If true, players cannot use lava buckets.")
             .define("disableLavaBucket", true);
 
+    private static final ModConfigSpec.DoubleValue ENDER_DRAGON_MAX_EXPLOSION_DAMAGE = BUILDER
+            .comment("Maximum damage the ender dragon can take from an explosion. Ender Dragon max health is 200.")
+            .defineInRange("enderDragonMaxExplosionDamage", 10.0, 1.0, 200.0);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     @Override
@@ -47,5 +51,10 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
     @Override
     public boolean disableLavaBucket() {
         return DISABLE_LAVA_BUCKET.get();
+    }
+
+    @Override
+    public float getEnderDragonMaxExplosionDamage() {
+        return ENDER_DRAGON_MAX_EXPLOSION_DAMAGE.get().floatValue();
     }
 }

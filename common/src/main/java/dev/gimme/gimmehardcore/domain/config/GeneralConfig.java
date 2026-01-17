@@ -8,4 +8,5 @@ public abstract class GeneralConfig {
     public abstract float getNaturalRegenerationSpeedMultiplier();
     public abstract int getMaxIronGolemIngotDrops();
     public abstract boolean disableLavaBucket();
+    public abstract float getEnderDragonMaxExplosionDamage();
 }
