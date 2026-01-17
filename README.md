@@ -7,6 +7,7 @@ All features require the mod to be installed on both the server and client, unle
 Features:
 - Block hardness: Increased block hardness based on block y-level.
 - Shield fragility: Shields have less durability and have a small chance to break when blocking attacks.
+- Pickaxe requirements: Stone requires stone, iron requires iron and diamond requires diamond.
 
 ![Logo](/images/logo.png)
 

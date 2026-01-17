@@ -9,6 +9,7 @@
     "fragility.MixinPlayer",
     "hardness.MixinBlock",
     "hardness.MixinBlockStateBase",
-    "hardness.MixinItem"
+    "hardness.MixinItem",
+    "tool.MixinItem"
   ]
 }
