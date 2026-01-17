@@ -10,7 +10,7 @@ public class NeoForgeHardnessConfig extends HardnessConfig {
     private static final ModConfigSpec.DoubleValue START_HARDNESS_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for block hardness at the starting Y level and above.
-                Vanilla: 1.0""")
+                 Vanilla: 1.0""")
             .defineInRange("startHardnessMultiplier", 1.0, 0.0, 10.0);
 
     private static final ModConfigSpec.DoubleValue END_HARDNESS_MULTIPLIER = BUILDER
@@ -37,15 +37,19 @@ public class NeoForgeHardnessConfig extends HardnessConfig {
             .defineInRange("hardnessSoftCapMultiplier", 0.2, 0.0, 1.0);
 
     private static final ModConfigSpec.DoubleValue TOOL_DAMAGE_HARDNESS_MULTIPLIER = BUILDER
-            .comment("How much tool damage is affected by the adjusted block hardness.")
+            .comment("""
+                    How much tool damage is affected by the adjusted block hardness from above. For example, if set to 1.0, tool damage scales
+                    linearly with the increase in hardness. Keep in mind that tools only take damage in whole numbers (default 1 per block),
+                    and this effect takes the floor of the calculated damage (i.e., 1.9 becomes 1, 2.0 becomes 2).
+                     Vanilla: 0.0""")
             .defineInRange("toolDamageHardnessMultiplier", 1.0, 0.0, 10.0);
 
     private static final ModConfigSpec.DoubleValue EXHAUSTION_HARDNESS_MULTIPLIER = BUILDER
-            .comment("How much exhaustion is affected by the adjusted block hardness.")
+            .comment("How much exhaustion is affected by the adjusted block hardness from above.")
             .defineInRange("exhaustionHardnessMultiplier", 2.0, 0.0, 10.0);
 
     private static final ModConfigSpec.BooleanValue HARDNESS_IN_OVERWORLD_ONLY = BUILDER
-            .comment("If true, hardness adjustments only apply in the Overworld dimension.")
+            .comment("If hardness adjustments should only apply in the Overworld dimension.")
             .define("hardnessInOverworldOnly", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();

@@ -10,7 +10,7 @@ public class NeoForgeFragilityConfig extends FragilityConfig {
     private static final ModConfigSpec.DoubleValue SHIELD_DAMAGE_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for shield durability damage when blocking attacks.
-                Vanilla: 1.0""")
+                 Vanilla: 1.0""")
             .defineInRange("shieldDamageMultiplier", 2.0, 0.0, 10.0);
 
     private static final ModConfigSpec.DoubleValue SHIELD_BREAK_CHANCE = BUILDER
