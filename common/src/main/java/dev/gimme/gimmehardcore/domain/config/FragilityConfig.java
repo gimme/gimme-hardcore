@@ -5,5 +5,6 @@ public abstract class FragilityConfig {
     public static FragilityConfig INSTANCE;
 
     public abstract float getShieldDamageMultiplier();
-    public abstract float getShieldBreakChance();
+    public abstract float getMinShieldBreakChance();
+    public abstract float getMaxShieldBreakChance();
 }

@@ -22,7 +22,8 @@ public class MixinPlayer {
         int newAmount = 1 + Mth.floor(playerDamage * fragilityConfig.getShieldDamageMultiplier());
 
         // Risk to break completely
-        float breakChance = fragilityConfig.getShieldBreakChance();
+        var durabilityRatio = ((float) shield.getDamageValue() / shield.getMaxDamage());
+        float breakChance = fragilityConfig.getMinShieldBreakChance() + (durabilityRatio * (fragilityConfig.getMaxShieldBreakChance() - fragilityConfig.getMinShieldBreakChance()));
         if (player.level().getRandom().nextFloat() < breakChance) {
             newAmount = shield.getMaxDamage();
         }
