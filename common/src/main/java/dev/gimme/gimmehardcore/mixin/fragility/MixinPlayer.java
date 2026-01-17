@@ -1,6 +1,6 @@
 package dev.gimme.gimmehardcore.mixin.fragility;
 
-import dev.gimme.gimmehardcore.domain.config.Config;
+import dev.gimme.gimmehardcore.domain.config.FragilityConfig;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,7 +18,7 @@ public class MixinPlayer {
      */
     @Redirect(method = "hurtCurrentlyUsedShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V"))
     private void onHurtAndBreakShield(ItemStack shield, int shieldDamage, LivingEntity player, EquipmentSlot slot, float playerDamage) {
-        var fragilityConfig = Config.INSTANCE.getFragilityConfig();
+        var fragilityConfig = FragilityConfig.INSTANCE;
         int newAmount = 1 + Mth.floor(playerDamage * fragilityConfig.getShieldDamageMultiplier());
 
         // Risk to break completely

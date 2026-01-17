@@ -1,6 +1,6 @@
 package dev.gimme.gimmehardcore.mixin.hardness;
 
-import dev.gimme.gimmehardcore.domain.config.Config;
+import dev.gimme.gimmehardcore.domain.config.HardnessConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,7 +22,7 @@ public class MixinBlockStateBase {
     @Inject(at = @At("RETURN"), method = "getDestroySpeed", cancellable = true)
     private void onGetDestroySpeed(BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         float originalHardness = cir.getReturnValue();
-        var hardnessConfig = Config.INSTANCE.getHardnessConfig();
+        var hardnessConfig = HardnessConfig.INSTANCE;
 
         if (level instanceof Level realLevel && hardnessConfig.isHardnessInOverworldOnly() && !realLevel.dimensionType().natural()) return;
 

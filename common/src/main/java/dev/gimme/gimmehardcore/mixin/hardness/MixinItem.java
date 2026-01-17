@@ -1,6 +1,6 @@
 package dev.gimme.gimmehardcore.mixin.hardness;
 
-import dev.gimme.gimmehardcore.domain.config.Config;
+import dev.gimme.gimmehardcore.domain.config.HardnessConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +23,7 @@ public class MixinItem {
      */
     @Redirect(method = "mineBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V"))
     private void onMineBlockHurtAndBreak(ItemStack instance, int damageAmount, LivingEntity miningEntity, EquipmentSlot equipmentSlot, ItemStack itemStack, Level level, BlockState blockState, BlockPos blockPos) {
-        int adjustedAmount = Config.INSTANCE.getHardnessConfig().getAdjustedToolDamage(damageAmount, blockPos.getY());
+        int adjustedAmount = HardnessConfig.INSTANCE.getAdjustedToolDamage(damageAmount, blockPos.getY());
         instance.hurtAndBreak(adjustedAmount, miningEntity, equipmentSlot);
     }
 }

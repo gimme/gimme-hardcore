@@ -1,6 +1,6 @@
 package dev.gimme.gimmehardcore.mixin.hardness;
 
-import dev.gimme.gimmehardcore.domain.config.Config;
+import dev.gimme.gimmehardcore.domain.config.HardnessConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -21,7 +21,7 @@ public class MixinBlock {
      */
     @Redirect(method = "playerDestroy", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V"))
     private void onPlayerDestroyCauseFoodExhaustion(Player instance, float exhaustionAmount, Level level, Player player, BlockPos blockPos, BlockState blockState) {
-        float adjustedAmount = Config.INSTANCE.getHardnessConfig().getAdjustedExhaustion(exhaustionAmount, blockPos.getY());
+        float adjustedAmount = HardnessConfig.INSTANCE.getAdjustedExhaustion(exhaustionAmount, blockPos.getY());
         instance.causeFoodExhaustion(adjustedAmount);
     }
 }
