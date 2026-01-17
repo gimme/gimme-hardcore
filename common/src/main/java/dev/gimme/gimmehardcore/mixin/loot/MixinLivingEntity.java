@@ -4,7 +4,7 @@ import dev.gimme.gimmehardcore.domain.config.GeneralConfig;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.ReloadableServerRegistries;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -23,7 +23,7 @@ public class MixinLivingEntity {
     /**
      * Redirects iron golem loot table to lower ingot drops.
      */
-    @Redirect(method = "dropFromLootTable", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/ReloadableServerRegistries$Holder;getLootTable(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootTable;"))
+    @Redirect(method = "dropFromLootTable(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;ZLnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/ReloadableServerRegistries$Holder;getLootTable(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootTable;"))
     private LootTable onDropFromLootTable(ReloadableServerRegistries.Holder instance, ResourceKey<LootTable> lootTableKey) {
         if ((LivingEntity) (Object) this instanceof IronGolem && GeneralConfig.INSTANCE.getMaxIronGolemIngotDrops() != -1) {
             int maxIngotDrops = GeneralConfig.INSTANCE.getMaxIronGolemIngotDrops();

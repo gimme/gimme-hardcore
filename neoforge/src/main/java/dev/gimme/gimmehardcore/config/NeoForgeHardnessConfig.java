@@ -19,11 +19,11 @@ public class NeoForgeHardnessConfig extends HardnessConfig {
 
     private static final ModConfigSpec.IntValue START_HARDNESS_Y = BUILDER
             .comment("Y level at which the hardness starts to increase.")
-            .defineInRange("startHardnessY", 62, -64, 320);
+            .defineInRange("startHardnessY", 62, -64, 384);
 
     private static final ModConfigSpec.IntValue END_HARDNESS_Y = BUILDER
             .comment("Y level at which the hardness reaches its maximum multiplier.")
-            .defineInRange("endHardnessY", -64, -64, 320);
+            .defineInRange("endHardnessY", -64, -64, 384);
 
     private static final ModConfigSpec.IntValue HARDNESS_SOFT_CAP = BUILDER
             .comment("Hardness value above which the soft cap multiplier is applied. Obsidian has a hardness of 50.")

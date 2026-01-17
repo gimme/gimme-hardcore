@@ -1,13 +1,9 @@
 package dev.gimme.gimmehardcore.mixin.tool;
 
 import dev.gimme.gimmehardcore.domain.config.GeneralConfig;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TieredItem;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -56,25 +52,20 @@ public abstract class MixinItem {
     @Inject(method = "isCorrectToolForDrops", at = @At("HEAD"), cancellable = true)
     private void onIsCorrectForDrops(ItemStack stack, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         if (!GeneralConfig.INSTANCE.pickaxeRequirements()) return;
-        if (!((Item) (Object) this instanceof TieredItem tieredItem)) return;
+        var instance = (Item) (Object) this;
 
-        switch (tieredItem.getTier()) {
-            case Tiers.WOOD -> {
-                if (STONE_BLOCKS.contains(state.getBlock())) {
-                    cir.setReturnValue(false);
-                }
+        if (instance == Items.WOODEN_PICKAXE) {
+            if (STONE_BLOCKS.contains(state.getBlock())) {
+                cir.setReturnValue(false);
             }
-            case Tiers.STONE -> {
-                if (IRON_BLOCKS.contains(state.getBlock())) {
-                    cir.setReturnValue(false);
-                }
+        } else if (instance == Items.STONE_PICKAXE || instance == Items.COPPER_PICKAXE) {
+            if (IRON_BLOCKS.contains(state.getBlock())) {
+                cir.setReturnValue(false);
             }
-            case Tiers.IRON -> {
-                if (DIAMOND_BLOCKS.contains(state.getBlock())) {
-                    cir.setReturnValue(false);
-                }
+        } else if (instance == Items.IRON_PICKAXE) {
+            if (DIAMOND_BLOCKS.contains(state.getBlock())) {
+                cir.setReturnValue(false);
             }
-            default -> {}
         }
     }
 }

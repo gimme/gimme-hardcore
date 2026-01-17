@@ -24,7 +24,7 @@ public class MixinBlockStateBase {
         float originalHardness = cir.getReturnValue();
         var hardnessConfig = HardnessConfig.INSTANCE;
 
-        if (level instanceof Level realLevel && hardnessConfig.isHardnessInOverworldOnly() && !realLevel.dimensionType().natural()) return;
+        if (level instanceof Level realLevel && hardnessConfig.isHardnessInOverworldOnly() && !realLevel.dimension().equals(Level.OVERWORLD)) return;
 
         float newSpeed = hardnessConfig.getAdjustedHardness(originalHardness, pos.getY());
         cir.setReturnValue(newSpeed);
