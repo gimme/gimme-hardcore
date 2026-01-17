@@ -23,6 +23,10 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
                      Vanilla: set to -1 (3-5 ingots)""")
             .defineInRange("maxIronGolemIngotDrops", 3, 0, 5);
 
+    private static final ModConfigSpec.BooleanValue DISABLE_LAVA_BUCKET = BUILDER
+            .comment("If true, players cannot use lava buckets.")
+            .define("disableLavaBucket", true);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     @Override
@@ -38,5 +42,10 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
     @Override
     public int getMaxIronGolemIngotDrops() {
         return MAX_IRON_GOLEM_INGOT_DROPS.get();
+    }
+
+    @Override
+    public boolean disableLavaBucket() {
+        return DISABLE_LAVA_BUCKET.get();
     }
 }

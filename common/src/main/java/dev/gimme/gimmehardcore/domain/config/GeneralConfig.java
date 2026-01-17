@@ -7,4 +7,5 @@ public abstract class GeneralConfig {
     public abstract boolean pickaxeRequirements();
     public abstract float getNaturalRegenerationSpeedMultiplier();
     public abstract int getMaxIronGolemIngotDrops();
+    public abstract boolean disableLavaBucket();
 }

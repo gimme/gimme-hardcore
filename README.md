@@ -13,6 +13,7 @@ All features require the mod to be installed on both the server and client, unle
 
 ### Minor Features
 - Iron Golem: Drops fewer ingots to make it more difficult to obtain an iron pickaxe.
+- Lava Bucket: Disables the ability to use lava buckets to prevent easy nether portal creation.
 
 ![Logo](/images/logo.png)
 
