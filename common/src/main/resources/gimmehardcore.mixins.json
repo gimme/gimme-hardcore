@@ -10,6 +10,7 @@
     "hardness.MixinBlock",
     "hardness.MixinBlockStateBase",
     "hardness.MixinItem",
+    "loot.MixinLivingEntity",
     "regeneration.MixinFoodData",
     "tool.MixinItem"
   ]

@@ -17,6 +17,12 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
             .comment("Multiplier for natural health regeneration speed. 1.0 is vanilla speed; 0.5 is half speed.")
             .defineInRange("naturalRegenerationSpeedMultiplier", 0.1, 0.0, 1.0);
 
+    private static final ModConfigSpec.IntValue MAX_IRON_GOLEM_INGOT_DROPS = BUILDER
+            .comment("""
+                    Maximum number of iron ingots dropped by iron golems. The minimum becomes 2 less than this value.
+                     Vanilla: set to -1 (3-5 ingots)""")
+            .defineInRange("maxIronGolemIngotDrops", 3, 0, 5);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     @Override
@@ -27,5 +33,10 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
     @Override
     public float getNaturalRegenerationSpeedMultiplier() {
         return NATURAL_REGENERATION_SPEED_MULTIPLIER.get().floatValue();
+    }
+
+    @Override
+    public int getMaxIronGolemIngotDrops() {
+        return MAX_IRON_GOLEM_INGOT_DROPS.get();
     }
 }
