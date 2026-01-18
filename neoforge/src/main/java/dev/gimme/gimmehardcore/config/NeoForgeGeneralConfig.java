@@ -7,12 +7,6 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.BooleanValue PICKAXE_REQUIREMENTS = BUILDER
-            .comment("""
-                If true, stone requires stone pickaxe to mine, iron requires iron pickaxe and diamond requires diamond pickaxe.
-                Hint: You can still acquire blocks through explosions.""")
-            .define("pickaxeRequirements", true);
-
     private static final ModConfigSpec.IntValue MAX_IRON_GOLEM_INGOT_DROPS = BUILDER
             .comment("""
                     Maximum number of iron ingots dropped by iron golems. The minimum becomes 2 less than this value.
@@ -28,11 +22,6 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
             .defineInRange("enderDragonMaxExplosionDamage", 10.0, 1.0, 200.0);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
-
-    @Override
-    public boolean pickaxeRequirements() {
-        return PICKAXE_REQUIREMENTS.get();
-    }
 
     @Override
     public int getMaxIronGolemIngotDrops() {

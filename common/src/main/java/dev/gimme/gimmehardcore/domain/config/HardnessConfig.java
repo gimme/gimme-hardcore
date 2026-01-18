@@ -4,6 +4,8 @@ public abstract class HardnessConfig {
 
     public static HardnessConfig INSTANCE;
 
+    public abstract boolean pickaxeRequirements();
+
     public abstract float getStartHardnessMultiplier();
     public abstract float getEndHardnessMultiplier();
     public abstract int getStartHardnessY();

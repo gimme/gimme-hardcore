@@ -17,10 +17,10 @@ import net.neoforged.fml.config.ModConfig;
 public class NeoForgeMod {
 
     public NeoForgeMod(ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeFragilityConfig.SPEC, Constants.MOD_ID + "-fragility.toml");
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeGeneralConfig.SPEC, Constants.MOD_ID + "-general.toml");
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeHardnessConfig.SPEC, Constants.MOD_ID + "-hardness.toml");
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeRegenConfig.SPEC, Constants.MOD_ID + "-regen.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeFragilityConfig.SPEC, Constants.MOD_ID + "-server-fragility.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeGeneralConfig.SPEC, Constants.MOD_ID + "-server-general.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeHardnessConfig.SPEC, Constants.MOD_ID + "-common-hardness.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeRegenConfig.SPEC, Constants.MOD_ID + "-server-regen.toml");
         FragilityConfig.INSTANCE = new NeoForgeFragilityConfig();
         GeneralConfig.INSTANCE = new NeoForgeGeneralConfig();
         HardnessConfig.INSTANCE = new NeoForgeHardnessConfig();

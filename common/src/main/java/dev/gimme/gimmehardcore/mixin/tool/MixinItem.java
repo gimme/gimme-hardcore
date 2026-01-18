@@ -1,6 +1,6 @@
 package dev.gimme.gimmehardcore.mixin.tool;
 
-import dev.gimme.gimmehardcore.domain.config.GeneralConfig;
+import dev.gimme.gimmehardcore.domain.config.HardnessConfig;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -51,7 +51,7 @@ public abstract class MixinItem {
      */
     @Inject(method = "isCorrectToolForDrops", at = @At("HEAD"), cancellable = true)
     private void onIsCorrectForDrops(ItemStack stack, BlockState state, CallbackInfoReturnable<Boolean> cir) {
-        if (!GeneralConfig.INSTANCE.pickaxeRequirements()) return;
+        if (!HardnessConfig.INSTANCE.pickaxeRequirements()) return;
         var instance = (Item) (Object) this;
 
         if (instance == Items.WOODEN_PICKAXE) {

@@ -7,6 +7,12 @@ public class NeoForgeHardnessConfig extends HardnessConfig {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    private static final ModConfigSpec.BooleanValue PICKAXE_REQUIREMENTS = BUILDER
+            .comment("""
+                If true, stone requires stone pickaxe to mine, iron requires iron pickaxe and diamond requires diamond pickaxe.
+                Hint: You can still acquire blocks through explosions.""")
+            .define("pickaxeRequirements", true);
+
     private static final ModConfigSpec.DoubleValue START_HARDNESS_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for block hardness at the starting Y level and above.
@@ -53,6 +59,11 @@ public class NeoForgeHardnessConfig extends HardnessConfig {
             .define("hardnessInOverworldOnly", true);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
+
+    @Override
+    public boolean pickaxeRequirements() {
+        return PICKAXE_REQUIREMENTS.get();
+    }
 
     @Override
     public float getStartHardnessMultiplier() {

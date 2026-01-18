@@ -2,15 +2,15 @@
 
 Miscellaneous tweaks and features for a more difficult Minecraft experience.
 
-All features require the mod to be installed on both the server and client, unless otherwise noted.
+Most features work on the server-side, but some features (marked below) require the mod to be installed on the client as well with the same settings to work properly.
 
 ### Features
-- Block hardness: Increased block hardness based on block y-level.
+- [Client & Server] Block hardness: Increased block hardness based on block y-level.
 - Pickaxe requirements: Stone requires stone, iron requires iron and diamond requires diamond.
-- [Server] Slow natural regeneration: Natural health regeneration is significantly slowed down.
-- [Server] Campfire passive healing: Campfires provide passive healing when players nearby.
+- Slow natural regeneration: Natural health regeneration is significantly slowed down.
+- Campfire passive healing: Campfires provide passive healing when players nearby.
 - Armor fragility: Armor has less durability and absorbs less damage.
-- Shield fragility: Shields have less durability and have a small chance to break when blocking attacks.
+- Shield fragility: Shields have less durability and have a small chance to break when taking damage.
 
 ### Minor Features
 - Iron Golem: Drops fewer ingots to make it more difficult to obtain an iron pickaxe.
