@@ -56,9 +56,10 @@ public class CampfirePassiveRegenBehavior {
             playersInRange.forEach(player -> {
                 var exhaustionCost = RegenConfig.INSTANCE.getCampfireHealExhaustion();
                 var maxHealTo = player.getMaxHealth() * RegenConfig.INSTANCE.getCampfireMaxHealToPercentage();
+                float healAmount = Math.min(RegenConfig.INSTANCE.getHealAmount(), maxHealTo - player.getHealth());
 
-                if (player.getHealth() < maxHealTo && (player.getFoodData().getFoodLevel() >= 18 || exhaustionCost == 0)) {
-                    player.heal(RegenConfig.INSTANCE.getHealAmount());
+                if (healAmount > 0 && (player.getFoodData().getFoodLevel() >= 18 || exhaustionCost == 0)) {
+                    player.heal(healAmount);
                     player.causeFoodExhaustion(exhaustionCost);
                 }
             });
