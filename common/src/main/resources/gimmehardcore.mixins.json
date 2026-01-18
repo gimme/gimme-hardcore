@@ -14,6 +14,7 @@
     "loot.MixinLivingEntity",
     "minor.MixinLivingEntity",
     "minor.MixinPlayer",
+    "regeneration.MixinCampfire",
     "regeneration.MixinFoodData",
     "tool.MixinItem"
   ]

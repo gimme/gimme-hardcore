@@ -1,6 +1,6 @@
 package dev.gimme.gimmehardcore.mixin.regeneration;
 
-import dev.gimme.gimmehardcore.domain.config.GeneralConfig;
+import dev.gimme.gimmehardcore.domain.config.RegenConfig;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.food.FoodData;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,7 +24,7 @@ public class MixinFoodData {
 
         float healRatio = Math.min(((FoodData) (Object) this).getSaturationLevel(), 6.0F) / 6.0F;
 
-        if (this.tickTimer < (int) (healRatio * gimme_hardcore$getRegenTicks())) {
+        if (gimme_hardcore$isRegenCompletelyTurnedOff() || this.tickTimer < (int) (healRatio * gimme_hardcore$getRegenTicks())) {
             ci.cancel();
         }
     }
@@ -36,19 +36,24 @@ public class MixinFoodData {
     private void beforeSmallHeal(ServerPlayer player, CallbackInfo ci) {
         if (gimme_hardcore$isModRegenFeatureDisabled()) return;
 
-        if (this.tickTimer < (int) gimme_hardcore$getRegenTicks()) {
+        if (gimme_hardcore$isRegenCompletelyTurnedOff() || this.tickTimer < (int) gimme_hardcore$getRegenTicks()) {
             ci.cancel();
         }
     }
 
     @Unique
     private static float gimme_hardcore$getRegenTicks() {
-        float regenSpeedMultiplier = GeneralConfig.INSTANCE.getNaturalRegenerationSpeedMultiplier();
+        float regenSpeedMultiplier = RegenConfig.INSTANCE.getNaturalRegenerationSpeedMultiplier();
         return 80 / regenSpeedMultiplier;
     }
 
     @Unique
     private static boolean gimme_hardcore$isModRegenFeatureDisabled() {
-        return GeneralConfig.INSTANCE.getNaturalRegenerationSpeedMultiplier() < 0;
+        return RegenConfig.INSTANCE.getNaturalRegenerationSpeedMultiplier() < 0;
+    }
+
+    @Unique
+    private static boolean gimme_hardcore$isRegenCompletelyTurnedOff() {
+        return RegenConfig.INSTANCE.getNaturalRegenerationSpeedMultiplier() == 0;
     }
 }

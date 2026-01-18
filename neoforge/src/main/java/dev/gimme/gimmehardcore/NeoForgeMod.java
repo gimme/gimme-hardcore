@@ -3,9 +3,11 @@ package dev.gimme.gimmehardcore;
 import dev.gimme.gimmehardcore.config.NeoForgeFragilityConfig;
 import dev.gimme.gimmehardcore.config.NeoForgeGeneralConfig;
 import dev.gimme.gimmehardcore.config.NeoForgeHardnessConfig;
+import dev.gimme.gimmehardcore.config.NeoForgeRegenConfig;
 import dev.gimme.gimmehardcore.domain.config.FragilityConfig;
 import dev.gimme.gimmehardcore.domain.config.GeneralConfig;
 import dev.gimme.gimmehardcore.domain.config.HardnessConfig;
+import dev.gimme.gimmehardcore.domain.config.RegenConfig;
 import dev.gimme.gimmehardcore.domain.util.Constants;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -18,8 +20,10 @@ public class NeoForgeMod {
         modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeFragilityConfig.SPEC, Constants.MOD_ID + "-fragility.toml");
         modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeGeneralConfig.SPEC, Constants.MOD_ID + "-general.toml");
         modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeHardnessConfig.SPEC, Constants.MOD_ID + "-hardness.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeRegenConfig.SPEC, Constants.MOD_ID + "-regen.toml");
         FragilityConfig.INSTANCE = new NeoForgeFragilityConfig();
         GeneralConfig.INSTANCE = new NeoForgeGeneralConfig();
         HardnessConfig.INSTANCE = new NeoForgeHardnessConfig();
+        RegenConfig.INSTANCE = new NeoForgeRegenConfig();
     }
 }
