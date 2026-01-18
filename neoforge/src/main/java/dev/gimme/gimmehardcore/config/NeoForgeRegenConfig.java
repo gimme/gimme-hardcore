@@ -20,7 +20,7 @@ public class NeoForgeRegenConfig extends RegenConfig {
 
     private static final ModConfigSpec.DoubleValue CAMPFIRE_INTERVAL_SECONDS = BUILDER
             .comment("Seconds between each heal tick when Campfire regeneration is active.")
-            .defineInRange("campfireIntervalSeconds", 1, 0.5, 60.0);
+            .defineInRange("campfireIntervalSeconds", 2, 0.5, 60.0);
 
     private static final ModConfigSpec.DoubleValue CAMPFIRE_RANGE_CONFIG = BUILDER
             .comment("Range (in blocks) around the Campfire within which players must be present to activate the effect.")
@@ -40,7 +40,7 @@ public class NeoForgeRegenConfig extends RegenConfig {
                 For reference, natural regeneration in vanilla Minecraft applies 6.0 exhaustion per 1 (half heart) healed.
                 If this is above 0, players will only heal if they have foodLevel >= 18.
                 """)
-            .defineInRange("campfireHealExhaustion", 6.0, 0.0, 100.0);
+            .defineInRange("campfireHealExhaustion", 3.0, 0.0, 100.0);
 
     private static final ModConfigSpec.DoubleValue CAMPFIRE_MAX_HEAL_TO_PERCENTAGE = BUILDER
             .comment("""
