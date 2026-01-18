@@ -8,6 +8,5 @@ public abstract class FragilityConfig {
     public abstract float getArmorAbsorbMultiplier();
 
     public abstract float getShieldDamageMultiplier();
-    public abstract float getMinShieldBreakChance();
-    public abstract float getMaxShieldBreakChance();
+    public abstract float getShieldBreakChance();
 }

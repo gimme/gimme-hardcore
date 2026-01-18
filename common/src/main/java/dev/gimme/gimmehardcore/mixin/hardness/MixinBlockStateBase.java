@@ -1,6 +1,7 @@
 package dev.gimme.gimmehardcore.mixin.hardness;
 
 import dev.gimme.gimmehardcore.domain.config.HardnessConfig;
+import dev.gimme.gimmehardcore.domain.util.Constants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -24,6 +25,7 @@ public class MixinBlockStateBase {
         float originalHardness = cir.getReturnValue();
         var hardnessConfig = HardnessConfig.INSTANCE;
 
+        Constants.LOG.debug("is overworld: {}", level instanceof Level realLevel && realLevel.dimension().equals(Level.OVERWORLD));
         if (level instanceof Level realLevel && hardnessConfig.isHardnessInOverworldOnly() && !realLevel.dimension().equals(Level.OVERWORLD)) return;
 
         float newSpeed = hardnessConfig.getAdjustedHardness(originalHardness, pos.getY());

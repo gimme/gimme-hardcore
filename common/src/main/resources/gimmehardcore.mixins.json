@@ -5,8 +5,9 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
+    "fragility.MixinItemDamageFunction",
+    "fragility.MixinItemStack",
     "fragility.MixinLivingEntity",
-    "fragility.MixinPlayer",
     "hardness.MixinBlock",
     "hardness.MixinBlockStateBase",
     "hardness.MixinItem",

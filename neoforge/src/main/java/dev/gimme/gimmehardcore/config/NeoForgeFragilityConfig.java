@@ -11,27 +11,23 @@ public class NeoForgeFragilityConfig extends FragilityConfig {
             .comment("""
                 Multiplier for armor durability damage when taking damage.
                  Vanilla: 1.0""")
-            .defineInRange("armorDamageMultiplier", 4.0, 1.0, 10.0);
+            .defineInRange("armorDamageMultiplier", 8.0, 1.0, 1000.0);
 
     private static final ModConfigSpec.DoubleValue ARMOR_ABSORB_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for how much damage armor absorbs.
                  Vanilla: 1.0""")
-            .defineInRange("armorAbsorbMultiplier", 0.67, 0.0, 1.0);
+            .defineInRange("armorAbsorbMultiplier", 0.5, 0.0, 1.0);
 
     private static final ModConfigSpec.DoubleValue SHIELD_DAMAGE_MULTIPLIER = BUILDER
             .comment("""
                 Multiplier for shield durability damage when blocking attacks.
                  Vanilla: 1.0""")
-            .defineInRange("shieldDamageMultiplier", 4.0, 1.0, 10.0);
+            .defineInRange("shieldDamageMultiplier", 4.0, 1.0, 1000.0);
 
-    private static final ModConfigSpec.DoubleValue MIN_SHIELD_BREAK_CHANCE = BUILDER
-            .comment("Chance for shields to break completely when blocking an attack on highest durability.")
-            .defineInRange("minShieldBreakChance", 0.05, 0.0, 1.0);
-
-    private static final ModConfigSpec.DoubleValue MAX_SHIELD_BREAK_CHANCE = BUILDER
-            .comment("Chance for shields to break completely when blocking an attack on lowest durability.")
-            .defineInRange("maxShieldBreakChance", 0.20, 0.0, 1.0);
+    private static final ModConfigSpec.DoubleValue SHIELD_BREAK_CHANCE = BUILDER
+            .comment("Chance for shields to break completely when they take damage.")
+            .defineInRange("shieldBreakChance", 0.05, 0.0, 1.0);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
@@ -51,12 +47,7 @@ public class NeoForgeFragilityConfig extends FragilityConfig {
     }
 
     @Override
-    public float getMinShieldBreakChance() {
-        return MIN_SHIELD_BREAK_CHANCE.get().floatValue();
-    }
-
-    @Override
-    public float getMaxShieldBreakChance() {
-        return MAX_SHIELD_BREAK_CHANCE.get().floatValue();
+    public float getShieldBreakChance() {
+        return SHIELD_BREAK_CHANCE.get().floatValue();
     }
 }

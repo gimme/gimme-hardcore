@@ -14,8 +14,11 @@ public class NeoForgeGeneralConfig extends GeneralConfig {
             .define("pickaxeRequirements", true);
 
     private static final ModConfigSpec.DoubleValue NATURAL_REGENERATION_SPEED_MULTIPLIER = BUILDER
-            .comment("Multiplier for natural health regeneration speed. 1.0 is vanilla speed; 0.5 is half speed.")
-            .defineInRange("naturalRegenerationSpeedMultiplier", 0.1, 0.0, 1.0);
+            .comment("""
+                    Multiplier for natural health regeneration speed. Note: this also makes being saturated not heal you faster.
+                    For example, setting this to 0.1 makes it take 40 seconds per half heart instead of 4 seconds.
+                     Vanilla: set to -1""")
+            .defineInRange("naturalRegenerationSpeedMultiplier", 0.1, -1.0, 1.0);
 
     private static final ModConfigSpec.IntValue MAX_IRON_GOLEM_INGOT_DROPS = BUILDER
             .comment("""

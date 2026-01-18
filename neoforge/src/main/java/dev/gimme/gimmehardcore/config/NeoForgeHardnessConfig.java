@@ -11,11 +11,11 @@ public class NeoForgeHardnessConfig extends HardnessConfig {
             .comment("""
                 Multiplier for block hardness at the starting Y level and above.
                  Vanilla: 1.0""")
-            .defineInRange("startHardnessMultiplier", 1.0, 0.0, 10.0);
+            .defineInRange("startHardnessMultiplier", 1.0, 0.0, 100.0);
 
     private static final ModConfigSpec.DoubleValue END_HARDNESS_MULTIPLIER = BUILDER
             .comment("Multiplier for block hardness at the ending Y level and below.")
-            .defineInRange("endHardnessMultiplier", 8.0, 0.0, 10.0);
+            .defineInRange("endHardnessMultiplier", 8.0, 0.0, 100.0);
 
     private static final ModConfigSpec.IntValue START_HARDNESS_Y = BUILDER
             .comment("Y level at which the hardness starts to increase.")
